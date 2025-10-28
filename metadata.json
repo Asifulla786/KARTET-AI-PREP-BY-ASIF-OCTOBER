@@ -1,0 +1,5 @@
+{
+  "name": "KARTET AI Exam Prep",
+  "description": "An AI-powered exam preparation tool for the Karnataka Teacher Eligibility Test (KARTET). Generate practice questions in Urdu, English, and Kannada based on the official syllabus.",
+  "requestFramePermissions": []
+}
