@@ -3,7 +3,6 @@ import Header from './components/Header';
 import LoadingSpinner from './components/LoadingSpinner';
 import ErrorDisplay from './components/ErrorDisplay';
 import { Question, SyllabusTopic, Language, PaperType, MediumType } from './types';
-import { generateQuestions } from './services/geminiService';
 import QuestionDisplay from './components/QuestionDisplay';
 import Timer from './components/Timer';
 import ExamResults from './components/ExamResults';
@@ -47,6 +46,7 @@ const App: React.FC = () => {
     setQuestions([]);
     setUserAnswers({});
     try {
+      const { generateQuestions } = await import('./services/geminiService');
       const generated = await generateQuestions(selectedTopic, TOTAL_QUESTIONS);
       setQuestions(generated);
       setTimeLeft(generated.length * TIME_PER_QUESTION);
@@ -62,6 +62,7 @@ const App: React.FC = () => {
     setIsLoadingMore(true);
     setError(null);
     try {
+      const { generateQuestions } = await import('./services/geminiService');
       const newQuestions = await generateQuestions(selectedTopic, TOTAL_QUESTIONS);
       setQuestions(prevQuestions => [...prevQuestions, ...newQuestions]);
     } catch (e: any)
